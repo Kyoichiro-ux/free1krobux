@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 8th Monthsarry ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Neue", cursive, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top left, #ff1e8a, #000000);
+      overflow: hidden;
+      color: #ffb6d9;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      font-size: 20px;
+      color: #ff4da6;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    .trail-heart {
+      position: absolute;
+      font-size: 18px;
+      pointer-events: none;
+      animation: floatTrail 2s forwards;
+      opacity: 0.8;
+    }
+    @keyframes floatTrail {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+    }
+
+    #questionScreen, #introScreen, #messageScreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    #introScreen, #messageScreen {
+      display: none;
+    }
+
+    .question-frame {
+      border: 3px solid #ff4da6;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 20px #ff4da6, 0 0 40px #ff80bf, inset 0 0 15px #ff80bf;
+      background: rgba(0,0,0,0.6);
+      text-align: center;
+      animation: pulseFrame 2s infinite;
+    }
+    @keyframes pulseFrame {
+      0%, 100% { box-shadow: 0 0 20px #ff4da6, 0 0 40px #ff80bf, inset 0 0 15px #ff80bf; }
+      50% { box-shadow: 0 0 30px #ff80bf, 0 0 60px #ff4da6, inset 0 0 20px #ff4da6; }
+    }
+
+    .question-frame h1 {
+      font-size: 2.5em;
+      color: #ffb6d9;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px #ff4da6, 0 0 30px #ff80bf;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4da6;
+      color: white;
+      box-shadow: 0 0 10px #ff80bf, 0 0 20px #ff4da6;
+    }
+    #yesBtn:hover {
+      background: #e91e63;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #f48fb1;
+      color: white;
+      position: absolute;
+    }
+
+    .introText {
+      font-size: 3em;
+      font-weight: bold;
+      color: #ff80bf;
+      text-shadow: 0 0 20px #ff4da6, 0 0 40px #ff80bf;
+      opacity: 0;
+      animation: fadeInOut 4s forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .letter-title {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #ffb6d9;
+      text-shadow: 0 0 10px #ff4da6, 0 0 25px #ff80bf;
+    }
+    .letter-box {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #ff4da6;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #ff4da6, 0 0 30px #ff80bf;
+      width: 90%;
+      max-width: 600px;
+      min-height: 300px;
+      padding: 20px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .line {
+      opacity: 0;
+      margin: 8px 0;
+      animation: fadeIn 1s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .image-container img {
+      width: 45%;
+      max-width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ff4da6, 0 0 20px #ff80bf;
+    }
+  </style>
+</head>
+<body>
+  <span class="heart" style="left:10%; animation-delay:0s;">❤️</span>
+  <span class="heart" style="left:30%; animation-delay:2s;">💕</span>
+  <span class="heart" style="left:50%; animation-delay:4s;">💖</span>
+  <span class="heart" style="left:70%; animation-delay:1s;">💘</span>
+  <span class="heart" style="left:90%; animation-delay:3s;">💞</span>
+
+  <div id="questionScreen">
+    <div class="question-frame">
+      <h1>Hiii lablab mo ba ako? 💕</h1>
+      <div>
+        <button id="yesBtn">Yes 💕</button>
+        <button id="noBtn">No 😜</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="introScreen">
+    <h1 class="introText">Happy 8th Monthsarry Baby!! ❤️</h1>
+  </div>
+
+  <div id="messageScreen">
+    <div class="letter-title">Happy Monthsarry Baby 💕</div>
+    <div class="letter-box" id="letterBox"></div>
+    <div class="image-container">
+      <img src="yourphoto1.jpg" alt="Sweet Memory">
+      <img src="yourphoto2.jpg" alt="Us Together">
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const questionScreen = document.getElementById("questionScreen");
+    const introScreen = document.getElementById("introScreen");
+    const messageScreen = document.getElementById("messageScreen");
+    const letterBox = document.getElementById("letterBox");
+
+    const message = `Hi baby kooo ❤️ Happy 8th Monthsarry pooo. Me xur happy baby nakaabot us here and sana magtagal at mag-stay ka pa sakin ng 1000 more years 💕.
+Baby ko, I’m so grateful dahil pinili mo ako bilang ur furivir boyfriend 💖. Sana po hindi ikaw mapagod sakin at sa ugali ko kahit paulit-ulit araw-araw.
+I keep asking questions lalo na tuwing nasa school ka 💕. Sorry po talaga baby, hindi ko mapigilang mag-overthink kase baka makahanap ka ng magiging the one mo na malapit, tas magagawa nyo lahat and mas magiging masaya ka ❤️.
+Pero I’m so happy po na ako parin lablab mo 💖.
+
+THANK YOU BABY, THANK YOU for loving me kahit my behaviour is not good sometimes at nadidisappoint kita 💕. I’m very sorry baby ko. Believe me po, if may nagawa man ako sayo na hindi mo nagustuhan, hindi ko po sinasadya yun 💖.
+PROMISE baby, ur my only girl forever and ever ❤️. I will never find others kahit may mas better pa sayo. For me, nasa’yo na ang lahat 💕.
+I like your humor and we’re both weird hehe 💖. I love you babycakes kooo ❤️.
+
+Guess what? 4 months nalang, mag 1 year na tayo 💕. Sabi mo you will believe me na sa lahat and we’re forever na ❤️. Sorry din po kung minsan kapag nag-oopen up ka ng feelings mo, parang mali sagot ko 💖.
+I’m trying my best baby 💕. Pero baby ko, I’m really trying to be better para mas mahalin mo pa ako ng sobra ❤️.
+
+Ayaw ko na nga ikaw awayin or pagalitan kase ur xur cute 💕. I always imagine ikaw kawawa kapag pinapagalitan kita ❤️. Cute mo gagu kaya di kita matiis baby e 💖.
+About minsan kapag di ako nagchat sayo, sorry po 💕. It means sobrang sama ng loob ko sayo, kaso tahimik ka din naman kaya nagchat na ako para hindi maging dry convo naten 💖.
+
+Baby, kapag tired ka, always update me sa mga ginagawa mo 💕. Kasi nag-ooverthink ako lalo na kapag nagjojoke ka ng super bad ❤️. Don’t do that po. I’m always here to support you 💖.
+Soon we’re gonna be rich, kaya natin to—teamwork lang baby ❤️. Forever sakin ka lang 💕.
+
+Mahal na mahal kita baby ko ❤️. Hindi ko iniisip na magcheat or may itago sayo. Honest ako lagi 💖. Baby, ur always cute and so pretty 💕. How can I hurt you? I’ll never do that ❤️. Trust me baby 💕.
+For me, ikaw lang talaga 💖. Baby, trust me po ah, I will never leave you ❤️.
+
+Always mag-update tayo para walang doubts 💕. Kahit LDR tayo, kaya natin to 💖. We can always find games or things para maglaro together and stay happy ❤️.
+Baby ko, I LOVE YOU ❤️. Don’t forget to kiss me always mwahhh 💕.
+
+I’m really scared minsan, baka mawala nalang feelings mo sakin 💖. Pero please baby, never leave me ❤️. I’m super serious sayo 💕.
+I will take care of you, papasayahin kita forever ❤️. Kapag nagkasama tayo, never ever kita sasaktan 💕.
+
+While LDR tayo, we need trust and love ❤️. I love you baby ko, you’re da best girlfriend in the world FOREVER 💕. Kaya natin to 💖.
+
+Happy 8th Monthsarry baby koooo ❤️ Pinaka-dabest ka sa lahat 💕!!!
+
+-CLYDE ❤️`;
+
+    const lines = message.split("\n");
+
+    yesBtn.addEventListener("click", () => {
+      questionScreen.style.display = "none";
+      introScreen.style.display = "flex";
+
+      setTimeout(() => {
+        introScreen.style.display = "none";
+        messageScreen.style.display = "flex";
+        messageScreen.style.flexDirection = "column";
+        messageScreen.style.alignItems = "center";
+
+        lines.forEach((line, i) => {
+          setTimeout(() => {
+            const p = document.createElement("p");
+            p.classList.add("line");
+            p.style.animationDelay = "0s";
+            p.textContent = line.trim();
+            letterBox.appendChild(p);
+          }, i * 1500);
+        });
+      }, 4000);
+    });
+
+    function moveNoButton() {
+      const x = Math.floor(Math.random() * (window.innerWidth - 120));
+      const y = Math.floor(Math.random() * (window.innerHeight - 60));
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    function createTrailHeart(x, y) {
+      const heart = document.createElement("span");
+      heart.textContent = "❤️";
+      heart.className = "trail-heart";
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2000);
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      createTrailHeart(e.pageX, e.pageY);
+    });
+    document.addEventListener("touchmove", (e) => {
+      const touch = e.touches[0];
+      createTrailHeart(touch.pageX, touch.pageY);
+    });
+  </script>
+</body>
+</html>
